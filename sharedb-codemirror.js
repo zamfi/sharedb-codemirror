@@ -40,7 +40,6 @@ class ShareDBCodeMirror {
 	 *    is hooked up. The first argument will be the error that occurred, if any.
 	 */
 	attachDoc(doc, callback) {
-		this.detachDoc();
 		doc.subscribe((error) => {
 			if (error) {
 				if (!callback) {
@@ -65,6 +64,7 @@ class ShareDBCodeMirror {
 	 * marks the end of the batch of operations.
 	 */
 	start() {
+		this.detachDoc();
 		var doc = this.doc;
 		var codeMirror = this.codeMirror;
 		if (!doc.type) {
