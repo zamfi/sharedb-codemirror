@@ -46,6 +46,7 @@ class ShareDBCodeMirror {
 					console.error(error);
 				}
 			} else {
+				this.detachDoc();
 				this.doc = doc;
 				this.log('ShareDBCodeMirror: subscribed to doc', doc);
 				this.start();
@@ -64,7 +65,6 @@ class ShareDBCodeMirror {
 	 * marks the end of the batch of operations.
 	 */
 	start() {
-		this.detachDoc();
 		var doc = this.doc;
 		var codeMirror = this.codeMirror;
 		if (!doc.type) {
